@@ -38,8 +38,8 @@ const char *gpuName = "NVIDIA";
 
 #endif
 
-#include <cstdio>
 #include <clocale>
+#include <cstdio>
 
 constexpr int nUnroll = 64;
 
@@ -74,7 +74,8 @@ __global__ void test(int *gN, float b, float c, float d, int *out) {
 
 int main(int argc, char **argv) {
 
-  const int GlobalArraySIZE = 1 * 1024 * 1024 * 1024 / sizeof(int); // 1 GB
+  // const int GlobalArraySIZE = 1 * 1024 * 1024 * 1024 / sizeof(int); // 1 GB
+  const int GlobalArraySIZE = 1024; //
 
   const int nIter = 5;
 
