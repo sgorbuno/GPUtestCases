@@ -39,6 +39,7 @@ const char *gpuName = "NVIDIA";
 #endif
 
 #include <cstdio>
+#include <clocale>
 
 constexpr int nUnroll = 64;
 
