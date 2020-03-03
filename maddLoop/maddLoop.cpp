@@ -131,16 +131,16 @@ int main(int argc, char **argv) {
         cudaEventSynchronize(stop[iter]);
         float timeMS;
         cudaEventElapsedTime(&timeMS, start[iter], stop[iter]);
-        cudaMemcpy(hostPtr2, devPtr2, sizeof(int) * GlobalArraySIZE,
+        cudaMemcpy(hostPtr2, devPtr2, sizeof(int) * nThreads,
                    cudaMemcpyDeviceToHost);
         int sum = 0;
-        for (int i = 0; i < GlobalArraySIZE; i++) {
+        for (int i = 0; i < nThreads; i++) {
           sum += hostPtr2[i];
         }
         setlocale(LC_NUMERIC, "");
         setlocale(LC_ALL, "");
         printf("%s  %'d loops. Unroll %d, NThreads %d. LoopTest Time %'d usec, "
-               "output: %'d\n",
+               "output: %d\n",
                gpuName, nLoops, nUnroll, nThreads, (int)rint(timeMS * 1000),
                sum);
       } // iter
