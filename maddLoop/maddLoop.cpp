@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
         }
         setlocale(LC_NUMERIC, "");
         setlocale(LC_ALL, "");
-        printf("%s  %'d loops. Unroll %d, NThreads %d. LoopTest Time %'dusec, "
+        printf("%s  %'d loops. Unroll %d, NThreads %d. LoopTest Time %'d usec, "
                "output: %'d\n",
                gpuName, nLoops, nUnroll, nThreads, (int)rint(timeMS * 1000),
                sum);
