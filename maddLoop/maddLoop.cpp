@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
 
   const int GlobalArraySIZE = 1 * 1024 * 1024 * 1024 / sizeof(int); // 1 GB
 
-  const int nIter = 10;
+  const int nIter = 5;
 
   float b = 10, c = 1, d = 0;
 
@@ -111,7 +111,7 @@ int main(int argc, char **argv) {
 
     int nBlocks = 1;
 
-    for (int nThreads = 64; nThreads <= 1024; nThreads *= 4) {
+    for (int nThreads = 64; nThreads <= 1024; nThreads *= 2) {
       // for (int nThreads = 64; nThreads <= 64; nThreads *= 2) {
 
       printf("\n");
