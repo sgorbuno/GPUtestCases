@@ -1,0 +1,182 @@
+	.text
+	.hsa_code_object_version 2,1
+	.hsa_code_object_isa 9,0,6,"AMD","AMDGPU"
+	.weak	_Z4testPifffS_          ; -- Begin function _Z4testPifffS_
+	.p2align	8
+	.type	_Z4testPifffS_,@function
+	.amdgpu_hsa_kernel _Z4testPifffS_
+_Z4testPifffS_:                         ; @_Z4testPifffS_
+	.amd_kernel_code_t
+		amd_code_version_major = 1
+		amd_code_version_minor = 2
+		amd_machine_kind = 1
+		amd_machine_version_major = 9
+		amd_machine_version_minor = 0
+		amd_machine_version_stepping = 6
+		kernel_code_entry_byte_offset = 256
+		kernel_code_prefetch_byte_size = 0
+		granulated_workitem_vgpr_count = 0
+		granulated_wavefront_sgpr_count = 1
+		priority = 0
+		float_mode = 192
+		priv = 0
+		enable_dx10_clamp = 1
+		debug_mode = 0
+		enable_ieee_mode = 1
+		enable_wgp_mode = 0
+		enable_mem_ordered = 0
+		enable_fwd_progress = 0
+		enable_sgpr_private_segment_wave_byte_offset = 0
+		user_sgpr_count = 6
+		enable_trap_handler = 0
+		enable_sgpr_workgroup_id_x = 1
+		enable_sgpr_workgroup_id_y = 0
+		enable_sgpr_workgroup_id_z = 0
+		enable_sgpr_workgroup_info = 0
+		enable_vgpr_workitem_id = 0
+		enable_exception_msb = 0
+		granulated_lds_size = 0
+		enable_exception = 0
+		enable_sgpr_private_segment_buffer = 1
+		enable_sgpr_dispatch_ptr = 0
+		enable_sgpr_queue_ptr = 0
+		enable_sgpr_kernarg_segment_ptr = 1
+		enable_sgpr_dispatch_id = 0
+		enable_sgpr_flat_scratch_init = 0
+		enable_sgpr_private_segment_size = 0
+		enable_sgpr_grid_workgroup_count_x = 0
+		enable_sgpr_grid_workgroup_count_y = 0
+		enable_sgpr_grid_workgroup_count_z = 0
+		enable_wavefront_size32 = 0
+		enable_ordered_append_gds = 0
+		private_element_size = 1
+		is_ptr64 = 1
+		is_dynamic_callstack = 0
+		is_debug_enabled = 0
+		is_xnack_enabled = 0
+		workitem_private_segment_byte_size = 0
+		workgroup_group_segment_byte_size = 0
+		gds_segment_byte_size = 0
+		kernarg_segment_byte_size = 32
+		workgroup_fbarrier_count = 0
+		wavefront_sgpr_count = 14
+		workitem_vgpr_count = 3
+		reserved_vgpr_first = 0
+		reserved_vgpr_count = 0
+		reserved_sgpr_first = 0
+		reserved_sgpr_count = 0
+		debug_wavefront_private_segment_offset_sgpr = 0
+		debug_private_segment_buffer_sgpr = 0
+		kernarg_segment_alignment = 4
+		group_segment_alignment = 4
+		private_segment_alignment = 4
+		wavefront_size = 6
+		call_convention = -1
+		runtime_loader_kernel_symbol = 0
+	.end_amd_kernel_code_t
+; %bb.0:                                ; %entry
+	s_load_dwordx2 s[0:1], s[4:5], 0x0
+	s_load_dwordx4 s[8:11], s[4:5], 0x8
+	v_cvt_f32_ubyte0_e32 v1, v0
+	s_waitcnt lgkmcnt(0)
+	s_load_dword s2, s[0:1], 0x0
+	s_load_dwordx2 s[0:1], s[4:5], 0x18
+	v_add_f32_e32 v1, s8, v1
+	s_waitcnt lgkmcnt(0)
+	s_cmp_lt_i32 s2, 1
+	s_cbranch_scc1 BB0_3
+; %bb.1:                                ; %for.body.preheader
+	v_mov_b32_e32 v2, s10
+BB0_2:                                  ; %for.body
+                                        ; =>This Inner Loop Header: Depth=1
+	s_add_i32 s2, s2, -1
+	s_cmp_lg_u32 s2, 0
+	v_mad_f32 v1, s9, v1, v2
+	s_cbranch_scc1 BB0_2
+BB0_3:                                  ; %for.end
+	v_cvt_i32_f32_e32 v2, v1
+	v_lshlrev_b32_e32 v0, 2, v0
+	v_mov_b32_e32 v1, s1
+	v_add_co_u32_e32 v0, vcc, s0, v0
+	v_addc_co_u32_e32 v1, vcc, 0, v1, vcc
+	global_store_dword v[0:1], v2, off
+	s_endpgm
+.Lfunc_end0:
+	.size	_Z4testPifffS_, .Lfunc_end0-_Z4testPifffS_
+                                        ; -- End function
+	.section	.AMDGPU.csdata
+; Kernel info:
+; codeLenInByte = 112
+; NumSgprs: 14
+; NumVgprs: 3
+; ScratchSize: 0
+; MemoryBound: 0
+; FloatMode: 192
+; IeeeMode: 1
+; LDSByteSize: 0 bytes/workgroup (compile time only)
+; SGPRBlocks: 1
+; VGPRBlocks: 0
+; NumSGPRsForWavesPerEU: 14
+; NumVGPRsForWavesPerEU: 3
+; Occupancy: 10
+; WaveLimiterHint : 1
+; COMPUTE_PGM_RSRC2:USER_SGPR: 6
+; COMPUTE_PGM_RSRC2:TRAP_HANDLER: 0
+; COMPUTE_PGM_RSRC2:TGID_X_EN: 1
+; COMPUTE_PGM_RSRC2:TGID_Y_EN: 0
+; COMPUTE_PGM_RSRC2:TGID_Z_EN: 0
+; COMPUTE_PGM_RSRC2:TIDIG_COMP_CNT: 0
+	.protected	__ocml_nan_f16
+	.protected	__ocml_ldexp_f16
+
+	.ident	"HCC clang version 10.0.0 (/data/jenkins-workspace/compute-rocm-rel-3.0.2/external/hcc-tot/llvm-project/clang d390128a1fa388b6901ef359b6a30d2372ca0e59) (based on HCC 3.0.19493-75ea952e-d390128a1fa )"
+	.section	".note.GNU-stack"
+	.amd_amdgpu_isa "amdgcn-amd-amdhsa--gfx906+sram-ecc"
+	.amd_amdgpu_hsa_metadata
+---
+Version:         [ 1, 0 ]
+Kernels:
+  - Name:            _Z4testPifffS_
+    SymbolName:      '_Z4testPifffS_@kd'
+    Language:        OpenCL C
+    LanguageVersion: [ 2, 0 ]
+    Args:
+      - Name:            gN
+        Size:            8
+        Align:           8
+        ValueKind:       GlobalBuffer
+        ValueType:       I32
+        AddrSpaceQual:   Generic
+      - Name:            b
+        Size:            4
+        Align:           4
+        ValueKind:       ByValue
+        ValueType:       F32
+      - Name:            c
+        Size:            4
+        Align:           4
+        ValueKind:       ByValue
+        ValueType:       F32
+      - Name:            d
+        Size:            4
+        Align:           4
+        ValueKind:       ByValue
+        ValueType:       F32
+      - Name:            out
+        Size:            8
+        Align:           8
+        ValueKind:       GlobalBuffer
+        ValueType:       I32
+        AddrSpaceQual:   Generic
+    CodeProps:
+      KernargSegmentSize: 32
+      GroupSegmentFixedSize: 0
+      PrivateSegmentFixedSize: 0
+      KernargSegmentAlign: 8
+      WavefrontSize:   64
+      NumSGPRs:        14
+      NumVGPRs:        3
+      MaxFlatWorkGroupSize: 256
+...
+
+	.end_amd_amdgpu_hsa_metadata
