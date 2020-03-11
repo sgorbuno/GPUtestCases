@@ -57,10 +57,10 @@ __global__ void test(int *gN, int *gOut) {
  
   // the code below is not executed
 
-  constexpr int N = 1000;
+  constexpr int N = 1024;
   int A[N];
 
-  for (int i = 0; i < N; i+=2000) {
+  for (int i = 0; i < N; i++) {
     A[i] = i;
   }
   
